@@ -1,0 +1,31 @@
+
+spring:
+  application:
+    name: stock-worker-service
+
+server:
+  port: 8083
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      probes:
+        enabled: true
+  info:
+    env:
+      enabled: true
+
+info:
+  app:
+    name: Stock Worker Service
+    version: 1.0.0
+    description: Processes stock records from Kafka
+
+logging:
+  level:
+    root: INFO
+    com.stockprocessing.worker: DEBUG
