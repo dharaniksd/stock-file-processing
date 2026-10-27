@@ -1,0 +1,28 @@
+cat > .gitignore <<'EOF'
+# Maven
+target/
+**/target/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# macOS
+.DS_Store
+
+# Logs
+*.log
+logs/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Local configuration
+application-local.yml
+application-local.yaml
+application-local.properties
+EOF
