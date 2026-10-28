@@ -121,19 +121,22 @@ MySQL is authoritative for job lifecycle, leases, checkpoints, record outcomes, 
 
 ```mermaid
 flowchart LR
-    subgraph Cluster[Kubernetes / OpenShift]
-      IP[Ingestion pod: 1 replica] --- PV[(Node-local PV)]
-      CP[Coordinator pod(s)]
-      WP[Worker deployment: N replicas]
-      MP[Monitoring deployment]
-      K[(Kafka cluster)]
-      DB[(MySQL service)]
-      IP --> K
-      K --> WP
-      IP --> DB
-      CP --> DB
-      WP --> DB
-      MP --> DB
+    subgraph Cluster["Kubernetes / OpenShift"]
+        IP["Ingestion Pod - 1 replica"]
+        PV[("Node-local PersistentVolume")]
+        CP["Coordinator Pods"]
+        WP["Worker Deployment - N replicas"]
+        MP["Monitoring Deployment"]
+        K[("Kafka Cluster")]
+        DB[("MySQL 8")]
+
+        IP --- PV
+        IP --> K
+        K --> WP
+        IP --> DB
+        CP --> DB
+        WP --> DB
+        MP --> DB
     end
 ```
 
