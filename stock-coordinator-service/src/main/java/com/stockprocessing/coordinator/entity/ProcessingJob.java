@@ -2,9 +2,15 @@
 package com.stockprocessing.coordinator.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "processing_jobs")
 public class ProcessingJob {
@@ -39,72 +45,8 @@ public class ProcessingJob {
             insertable = false, updatable = false)
     private LocalDateTime updatedAt;
 
-    protected ProcessingJob() {
-        // Required by JPA
-    }
-
     public ProcessingJob(String fileName, String filePath) {
         this.fileName = fileName;
         this.filePath = filePath;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getFileName() {
-        return fileName;
-    }
-
-    public void setFileName(String fileName) {
-        this.fileName = fileName;
-    }
-
-    public String getFilePath() {
-        return filePath;
-    }
-
-    public void setFilePath(String filePath) {
-        this.filePath = filePath;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public Long getTotalRecords() {
-        return totalRecords;
-    }
-
-    public void setTotalRecords(Long totalRecords) {
-        this.totalRecords = totalRecords;
-    }
-
-    public Long getProcessedRecords() {
-        return processedRecords;
-    }
-
-    public void setProcessedRecords(Long processedRecords) {
-        this.processedRecords = processedRecords;
-    }
-
-    public Long getFailedRecords() {
-        return failedRecords;
-    }
-
-    public void setFailedRecords(Long failedRecords) {
-        this.failedRecords = failedRecords;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
     }
 }
